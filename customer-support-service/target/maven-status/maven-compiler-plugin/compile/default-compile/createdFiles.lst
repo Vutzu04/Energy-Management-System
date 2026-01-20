@@ -1,0 +1,12 @@
+com/example/customersupport/dtos/ChatMessageDTO.class
+com/example/customersupport/controllers/ChatController.class
+com/example/customersupport/config/RabbitConfig.class
+com/example/customersupport/entities/SupportRule.class
+com/example/customersupport/entities/ChatMessage.class
+com/example/customersupport/listeners/ChatMessageListener.class
+com/example/customersupport/services/RuleEngine.class
+com/example/customersupport/services/ChatService.class
+com/example/customersupport/repositories/RuleRepository.class
+com/example/customersupport/CustomerSupportServiceApplication.class
+com/example/customersupport/services/RuleEngine$RuleMatchResult.class
+com/example/customersupport/repositories/ChatRepository.class

@@ -1,0 +1,14 @@
+/Users/vutzu/Facultate/SD/ds2025_spring_example-main/device-management-service/src/main/java/com/example/devicemanagement/DeviceManagementApplication.java
+/Users/vutzu/Facultate/SD/ds2025_spring_example-main/device-management-service/src/main/java/com/example/devicemanagement/config/RabbitMQConfig.java
+/Users/vutzu/Facultate/SD/ds2025_spring_example-main/device-management-service/src/main/java/com/example/devicemanagement/controllers/AssociationController.java
+/Users/vutzu/Facultate/SD/ds2025_spring_example-main/device-management-service/src/main/java/com/example/devicemanagement/controllers/DeviceController.java
+/Users/vutzu/Facultate/SD/ds2025_spring_example-main/device-management-service/src/main/java/com/example/devicemanagement/dtos/AssociationRequest.java
+/Users/vutzu/Facultate/SD/ds2025_spring_example-main/device-management-service/src/main/java/com/example/devicemanagement/dtos/DeviceCreateDTO.java
+/Users/vutzu/Facultate/SD/ds2025_spring_example-main/device-management-service/src/main/java/com/example/devicemanagement/dtos/DeviceDTO.java
+/Users/vutzu/Facultate/SD/ds2025_spring_example-main/device-management-service/src/main/java/com/example/devicemanagement/dtos/DeviceSyncMessage.java
+/Users/vutzu/Facultate/SD/ds2025_spring_example-main/device-management-service/src/main/java/com/example/devicemanagement/dtos/DeviceUpdateDTO.java
+/Users/vutzu/Facultate/SD/ds2025_spring_example-main/device-management-service/src/main/java/com/example/devicemanagement/entities/Device.java
+/Users/vutzu/Facultate/SD/ds2025_spring_example-main/device-management-service/src/main/java/com/example/devicemanagement/entities/UserDevice.java
+/Users/vutzu/Facultate/SD/ds2025_spring_example-main/device-management-service/src/main/java/com/example/devicemanagement/repositories/DeviceRepository.java
+/Users/vutzu/Facultate/SD/ds2025_spring_example-main/device-management-service/src/main/java/com/example/devicemanagement/repositories/UserDeviceRepository.java
+/Users/vutzu/Facultate/SD/ds2025_spring_example-main/device-management-service/src/main/java/com/example/devicemanagement/services/DeviceService.java

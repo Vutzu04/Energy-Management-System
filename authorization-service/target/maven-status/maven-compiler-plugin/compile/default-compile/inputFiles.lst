@@ -1,0 +1,12 @@
+/Users/vutzu/Facultate/SD/ds2025_spring_example-main/authorization-service/src/main/java/com/example/authorization/AuthorizationServiceApplication.java
+/Users/vutzu/Facultate/SD/ds2025_spring_example-main/authorization-service/src/main/java/com/example/authorization/config/SecurityConfig.java
+/Users/vutzu/Facultate/SD/ds2025_spring_example-main/authorization-service/src/main/java/com/example/authorization/controllers/AuthController.java
+/Users/vutzu/Facultate/SD/ds2025_spring_example-main/authorization-service/src/main/java/com/example/authorization/dtos/CredentialDTO.java
+/Users/vutzu/Facultate/SD/ds2025_spring_example-main/authorization-service/src/main/java/com/example/authorization/dtos/ErrorResponse.java
+/Users/vutzu/Facultate/SD/ds2025_spring_example-main/authorization-service/src/main/java/com/example/authorization/dtos/LoginRequest.java
+/Users/vutzu/Facultate/SD/ds2025_spring_example-main/authorization-service/src/main/java/com/example/authorization/dtos/LoginResponse.java
+/Users/vutzu/Facultate/SD/ds2025_spring_example-main/authorization-service/src/main/java/com/example/authorization/dtos/RegisterRequest.java
+/Users/vutzu/Facultate/SD/ds2025_spring_example-main/authorization-service/src/main/java/com/example/authorization/entities/Credential.java
+/Users/vutzu/Facultate/SD/ds2025_spring_example-main/authorization-service/src/main/java/com/example/authorization/repositories/CredentialRepository.java
+/Users/vutzu/Facultate/SD/ds2025_spring_example-main/authorization-service/src/main/java/com/example/authorization/services/AuthService.java
+/Users/vutzu/Facultate/SD/ds2025_spring_example-main/authorization-service/src/main/java/com/example/authorization/utils/JwtUtil.java

@@ -1,0 +1,41 @@
+# Git
+.git
+.gitignore
+
+# IDE
+.idea
+.vscode
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Build artifacts
+target
+node_modules
+dist
+build
+
+# Maven
+.m2
+
+# Node
+npm-debug.log
+yarn-error.log
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Documentation
+*.md
+*.pdf
+
+# Docker
+.dockerignore
+Dockerfile
+docker-compose.yml
+
+# Tests
+src/test
+

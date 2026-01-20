@@ -1,0 +1,261 @@
+.energy-chart-container {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  padding: 24px;
+  margin: 20px 0;
+  transition: box-shadow 0.3s ease;
+}
+
+.energy-chart-container:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.energy-chart-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.chart-title h3 {
+  margin: 0;
+  color: #2c3e50;
+  font-size: 24px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.device-name {
+  margin: 8px 0 0 0;
+  color: #7f8c8d;
+  font-size: 14px;
+}
+
+.chart-controls {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.date-selector {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.date-selector label {
+  color: #34495e;
+  font-weight: 500;
+  font-size: 14px;
+}
+
+.date-input {
+  padding: 8px 12px;
+  border: 2px solid #bdc3c7;
+  border-radius: 6px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: border-color 0.3s ease;
+}
+
+.date-input:hover {
+  border-color: #3498db;
+}
+
+.date-input:focus {
+  outline: none;
+  border-color: #2980b9;
+  box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
+}
+
+.chart-type-selector {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.chart-type-selector label {
+  color: #34495e;
+  font-weight: 500;
+  font-size: 14px;
+}
+
+.type-btn {
+  padding: 8px 16px;
+  border: 2px solid #bdc3c7;
+  background: white;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  color: #34495e;
+  transition: all 0.3s ease;
+}
+
+.type-btn:hover {
+  border-color: #3498db;
+  color: #3498db;
+}
+
+.type-btn.active {
+  background: #3498db;
+  border-color: #3498db;
+  color: white;
+}
+
+.energy-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.stat-item {
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  padding: 16px;
+  border-radius: 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-left: 4px solid #3498db;
+}
+
+.stat-label {
+  color: #34495e;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.stat-value {
+  color: #2c3e50;
+  font-size: 18px;
+  font-weight: bold;
+  color: #3498db;
+}
+
+.chart-wrapper {
+  width: 100%;
+  height: auto;
+  background: #fafbfc;
+  padding: 20px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  border: 1px solid #ecf0f1;
+}
+
+.loading-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 20px;
+  gap: 16px;
+  color: #7f8c8d;
+}
+
+.spinner {
+  width: 40px;
+  height: 40px;
+  border: 4px solid #ecf0f1;
+  border-top: 4px solid #3498db;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.error-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px;
+  background: #fadbd8;
+  border-radius: 8px;
+  border: 1px solid #f5b7b1;
+  gap: 16px;
+}
+
+.error-state p {
+  color: #c0392b;
+  margin: 0;
+  font-weight: 500;
+}
+
+.retry-btn {
+  padding: 10px 20px;
+  background: #e74c3c;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background 0.3s ease;
+}
+
+.retry-btn:hover {
+  background: #c0392b;
+}
+
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 20px;
+  background: #f8f9fa;
+  border-radius: 8px;
+  border: 2px dashed #bdc3c7;
+  color: #7f8c8d;
+  gap: 12px;
+}
+
+.empty-state p {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.empty-state .hint {
+  font-size: 13px;
+  color: #95a5a6;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .energy-chart-header {
+    flex-direction: column;
+  }
+
+  .chart-controls {
+    width: 100%;
+    flex-direction: column;
+  }
+
+  .date-selector,
+  .chart-type-selector {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .energy-stats {
+    grid-template-columns: 1fr;
+  }
+
+  .chart-title h3 {
+    font-size: 20px;
+  }
+}
+

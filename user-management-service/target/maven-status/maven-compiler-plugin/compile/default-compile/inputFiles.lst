@@ -1,0 +1,11 @@
+/Users/vutzu/Facultate/SD/ds2025_spring_example-main/user-management-service/src/main/java/com/example/usermanagement/UserManagementApplication.java
+/Users/vutzu/Facultate/SD/ds2025_spring_example-main/user-management-service/src/main/java/com/example/usermanagement/config/RabbitMQConfig.java
+/Users/vutzu/Facultate/SD/ds2025_spring_example-main/user-management-service/src/main/java/com/example/usermanagement/config/RestTemplateConfig.java
+/Users/vutzu/Facultate/SD/ds2025_spring_example-main/user-management-service/src/main/java/com/example/usermanagement/controllers/UserController.java
+/Users/vutzu/Facultate/SD/ds2025_spring_example-main/user-management-service/src/main/java/com/example/usermanagement/dtos/UserCreateDTO.java
+/Users/vutzu/Facultate/SD/ds2025_spring_example-main/user-management-service/src/main/java/com/example/usermanagement/dtos/UserDTO.java
+/Users/vutzu/Facultate/SD/ds2025_spring_example-main/user-management-service/src/main/java/com/example/usermanagement/dtos/UserSyncMessage.java
+/Users/vutzu/Facultate/SD/ds2025_spring_example-main/user-management-service/src/main/java/com/example/usermanagement/dtos/UserUpdateDTO.java
+/Users/vutzu/Facultate/SD/ds2025_spring_example-main/user-management-service/src/main/java/com/example/usermanagement/entities/User.java
+/Users/vutzu/Facultate/SD/ds2025_spring_example-main/user-management-service/src/main/java/com/example/usermanagement/repositories/UserRepository.java
+/Users/vutzu/Facultate/SD/ds2025_spring_example-main/user-management-service/src/main/java/com/example/usermanagement/services/UserService.java

@@ -1,0 +1,417 @@
+version: '3.8'
+
+services:
+  # PostgreSQL Database for Credentials (Authorization Service)
+  postgres-credentials:
+    image: postgres:15
+    container_name: credential-postgres
+    environment:
+      POSTGRES_DB: credential_db
+      POSTGRES_USER: vutzu
+      POSTGRES_PASSWORD: root
+      POSTGRES_INITDB_ARGS: "-U vutzu"
+    ports:
+      - "5432:5432"
+    volumes:
+      - credential_data:/var/lib/postgresql/data
+      - ./init-credential-db.sql:/docker-entrypoint-initdb.d/init.sql
+    networks:
+      - microservices-network
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U vutzu -d credential_db"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # PostgreSQL Database for Users (User Management Service)
+  postgres-users:
+    image: postgres:15
+    container_name: user-postgres
+    environment:
+      POSTGRES_DB: user_db
+      POSTGRES_USER: vutzu
+      POSTGRES_PASSWORD: root
+      POSTGRES_INITDB_ARGS: "-U vutzu"
+    ports:
+      - "5433:5432"
+    volumes:
+      - user_data:/var/lib/postgresql/data
+      - ./init-user-db.sql:/docker-entrypoint-initdb.d/init.sql
+    networks:
+      - microservices-network
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U vutzu -d user_db"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # PostgreSQL Database for Devices (Device Management Service)
+  postgres-devices:
+    image: postgres:15
+    container_name: device-postgres
+    environment:
+      POSTGRES_DB: device_db
+      POSTGRES_USER: vutzu
+      POSTGRES_PASSWORD: root
+      POSTGRES_INITDB_ARGS: "-U vutzu"
+    ports:
+      - "5434:5432"
+    volumes:
+      - device_data:/var/lib/postgresql/data
+      - ./init-device-db.sql:/docker-entrypoint-initdb.d/init.sql
+    networks:
+      - microservices-network
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U vutzu -d device_db"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # Authorization Service
+  authorization-service:
+    build: ./authorization-service
+    container_name: authorization-service
+    ports:
+      - "8081:8081"
+    environment:
+      DB_IP: postgres-credentials
+      DB_PORT: 5432
+      DB_USER: vutzu
+      DB_PASSWORD: root
+      DB_DBNAME: credential_db
+      PORT: 8081
+      JWT_SECRET: mySecretKeyForJWTTokenGenerationThatShouldBeAtLeast256BitsLong
+      JWT_EXPIRATION: 86400000
+    depends_on:
+      postgres-credentials:
+        condition: service_healthy
+    networks:
+      - microservices-network
+
+  # User Management Service
+  user-management-service:
+    build: ./user-management-service
+    container_name: user-management-service
+    ports:
+      - "8082:8082"
+    environment:
+      DB_IP: postgres-users
+      DB_PORT: 5432
+      DB_USER: vutzu
+      DB_PASSWORD: root
+      DB_DBNAME: user_db
+      PORT: 8082
+    depends_on:
+      postgres-users:
+        condition: service_healthy
+    networks:
+      - microservices-network
+
+  # Device Management Service
+  device-management-service:
+    build: ./device-management-service
+    container_name: device-management-service
+    ports:
+      - "8083:8083"
+    environment:
+      DB_IP: postgres-devices
+      DB_PORT: 5432
+      DB_USER: vutzu
+      DB_PASSWORD: root
+      DB_DBNAME: device_db
+      PORT: 8083
+    depends_on:
+      postgres-devices:
+        condition: service_healthy
+    networks:
+      - microservices-network
+
+  # RabbitMQ Message Broker
+  rabbitmq:
+    image: rabbitmq:3-management
+    container_name: rabbitmq
+    environment:
+      RABBITMQ_DEFAULT_USER: guest
+      RABBITMQ_DEFAULT_PASS: guest
+    ports:
+      - "5672:5672"       # AMQP port
+      - "15672:15672"     # Management UI
+    networks:
+      - microservices-network
+    healthcheck:
+      test: ["CMD", "rabbitmq-diagnostics", "-q", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # PostgreSQL Database for Monitoring (Monitoring Service)
+  postgres-monitoring:
+    image: postgres:15
+    container_name: monitoring-postgres
+    environment:
+      POSTGRES_DB: monitoring_db
+      POSTGRES_USER: vutzu
+      POSTGRES_PASSWORD: root
+      POSTGRES_INITDB_ARGS: "-U vutzu"
+    ports:
+      - "5435:5432"
+    volumes:
+      - monitoring_data:/var/lib/postgresql/data
+      - ./init-monitoring-db.sql:/docker-entrypoint-initdb.d/init.sql
+    networks:
+      - microservices-network
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U vutzu -d monitoring_db"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # Monitoring Service
+  monitoring-service:
+    build: ./monitoring-service
+    container_name: monitoring-service
+    ports:
+      - "8084:8084"
+    environment:
+      PORT: 8084
+      DB_IP: postgres-monitoring
+      DB_PORT: 5432
+      DB_USER: vutzu
+      DB_PASSWORD: root
+      DB_DBNAME: monitoring_db
+      RABBITMQ_HOST: rabbitmq
+      RABBITMQ_PORT: 5672
+      RABBITMQ_USER: guest
+      RABBITMQ_PASSWORD: guest
+    depends_on:
+      postgres-monitoring:
+        condition: service_healthy
+      rabbitmq:
+        condition: service_healthy
+    networks:
+      - microservices-network
+
+  # Device Data Simulator
+  device-data-simulator:
+    build: ./device-data-simulator
+    container_name: device-data-simulator
+    ports:
+      - "8091:8085"
+    environment:
+      PORT: 8085
+      RABBITMQ_HOST: rabbitmq
+      RABBITMQ_PORT: 5672
+      RABBITMQ_USERNAME: guest
+      RABBITMQ_PASSWORD: guest
+    depends_on:
+      rabbitmq:
+        condition: service_healthy
+    networks:
+      - microservices-network
+
+  # PostgreSQL Database for Customer Support Service
+  postgres-support:
+    image: postgres:15
+    container_name: support-postgres
+    environment:
+      POSTGRES_DB: support_db
+      POSTGRES_USER: support_user
+      POSTGRES_PASSWORD: support_pass
+      POSTGRES_INITDB_ARGS: "-U support_user"
+    ports:
+      - "5436:5432"
+    volumes:
+      - support_data:/var/lib/postgresql/data
+      - ./init-support-db.sql:/docker-entrypoint-initdb.d/init.sql
+    networks:
+      - microservices-network
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U support_user -d support_db"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # WebSocket Service (Real-time Communication)
+  websocket-service:
+    build: ./websocket-service
+    container_name: websocket-service
+    ports:
+      - "8085:8085"
+    environment:
+      SPRING_RABBITMQ_HOST: rabbitmq
+      SPRING_RABBITMQ_PORT: 5672
+      SPRING_RABBITMQ_USERNAME: guest
+      SPRING_RABBITMQ_PASSWORD: guest
+    depends_on:
+      rabbitmq:
+        condition: service_healthy
+    networks:
+      - microservices-network
+
+  # Customer Support Service (Rule-based Chat)
+  customer-support-service:
+    build: ./customer-support-service
+    container_name: customer-support-service
+    ports:
+      - "8086:8086"
+    environment:
+      DB_URL: jdbc:postgresql://postgres-support:5432/support_db
+      DB_USER: support_user
+      DB_PASSWORD: support_pass
+      SPRING_RABBITMQ_HOST: rabbitmq
+      SPRING_RABBITMQ_PORT: 5672
+      SPRING_RABBITMQ_USERNAME: guest
+      SPRING_RABBITMQ_PASSWORD: guest
+    depends_on:
+      postgres-support:
+        condition: service_healthy
+      rabbitmq:
+        condition: service_healthy
+    networks:
+      - microservices-network
+
+  # Load Balancer Service
+  load-balancer-service:
+    build: ./load-balancer-service
+    container_name: load-balancer-service
+    ports:
+      - "8087:8087"
+    environment:
+      SPRING_RABBITMQ_HOST: rabbitmq
+      SPRING_RABBITMQ_PORT: 5672
+      SPRING_RABBITMQ_USERNAME: guest
+      SPRING_RABBITMQ_PASSWORD: guest
+    depends_on:
+      rabbitmq:
+        condition: service_healthy
+    networks:
+      - microservices-network
+
+  # Monitoring Service Replica 1
+  monitoring-service-replica-1:
+    build: ./monitoring-service
+    container_name: monitoring-service-1
+    ports:
+      - "8088:8084"
+    environment:
+      PORT: 8084
+      REPLICA_ID: 1
+      DB_IP: postgres-monitoring
+      DB_PORT: 5432
+      DB_USER: vutzu
+      DB_PASSWORD: root
+      DB_DBNAME: monitoring_db
+      RABBITMQ_HOST: rabbitmq
+      RABBITMQ_PORT: 5672
+      RABBITMQ_USER: guest
+      RABBITMQ_PASSWORD: guest
+    depends_on:
+      postgres-monitoring:
+        condition: service_healthy
+      rabbitmq:
+        condition: service_healthy
+    networks:
+      - microservices-network
+
+  # Monitoring Service Replica 2
+  monitoring-service-replica-2:
+    build: ./monitoring-service
+    container_name: monitoring-service-2
+    ports:
+      - "8089:8084"
+    environment:
+      PORT: 8084
+      REPLICA_ID: 2
+      DB_IP: postgres-monitoring
+      DB_PORT: 5432
+      DB_USER: vutzu
+      DB_PASSWORD: root
+      DB_DBNAME: monitoring_db
+      RABBITMQ_HOST: rabbitmq
+      RABBITMQ_PORT: 5672
+      RABBITMQ_USER: guest
+      RABBITMQ_PASSWORD: guest
+    depends_on:
+      postgres-monitoring:
+        condition: service_healthy
+      rabbitmq:
+        condition: service_healthy
+    networks:
+      - microservices-network
+
+  # Monitoring Service Replica 3
+  monitoring-service-replica-3:
+    build: ./monitoring-service
+    container_name: monitoring-service-3
+    ports:
+      - "8090:8084"
+    environment:
+      PORT: 8084
+      REPLICA_ID: 3
+      DB_IP: postgres-monitoring
+      DB_PORT: 5432
+      DB_USER: vutzu
+      DB_PASSWORD: root
+      DB_DBNAME: monitoring_db
+      RABBITMQ_HOST: rabbitmq
+      RABBITMQ_PORT: 5672
+      RABBITMQ_USER: guest
+      RABBITMQ_PASSWORD: guest
+    depends_on:
+      postgres-monitoring:
+        condition: service_healthy
+      rabbitmq:
+        condition: service_healthy
+    networks:
+      - microservices-network
+
+  # API Gateway
+  api-gateway:
+    build: ./api-gateway
+    container_name: api-gateway
+    ports:
+      - "8080:8080"
+    environment:
+      PORT: 8080
+      JWT_SECRET: mySecretKeyForJWTTokenGenerationThatShouldBeAtLeast256BitsLong
+      AUTHORIZATION_SERVICE_URL: http://authorization-service:8081
+      USER_MANAGEMENT_SERVICE_URL: http://user-management-service:8082
+      DEVICE_MANAGEMENT_SERVICE_URL: http://device-management-service:8083
+      MONITORING_SERVICE_URL: http://monitoring-service-replica-1:8084
+    depends_on:
+      - authorization-service
+      - user-management-service
+      - device-management-service
+      - monitoring-service-replica-1
+    networks:
+      - microservices-network
+
+  # pgAdmin - Database Management UI
+  pgadmin:
+    image: dpage/pgadmin4:latest
+    container_name: pgadmin
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@admin.com
+      PGADMIN_DEFAULT_PASSWORD: admin
+    ports:
+      - "5050:80"
+    depends_on:
+      - postgres-credentials
+      - postgres-users
+      - postgres-devices
+    networks:
+      - microservices-network
+    volumes:
+      - pgadmin_data:/var/lib/pgadmin
+
+volumes:
+  credential_data:
+  user_data:
+  device_data:
+  monitoring_data:
+  support_data:
+  pgadmin_data:
+
+networks:
+  microservices-network:
+    driver: bridge

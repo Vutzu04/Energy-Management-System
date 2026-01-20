@@ -1,0 +1,5 @@
+/Users/vutzu/Facultate/SD/ds2025_spring_example-main/device-data-simulator/src/main/java/com/example/simulator/SimulatorApplication.java
+/Users/vutzu/Facultate/SD/ds2025_spring_example-main/device-data-simulator/src/main/java/com/example/simulator/config/RabbitMQConfig.java
+/Users/vutzu/Facultate/SD/ds2025_spring_example-main/device-data-simulator/src/main/java/com/example/simulator/controllers/SimulatorController.java
+/Users/vutzu/Facultate/SD/ds2025_spring_example-main/device-data-simulator/src/main/java/com/example/simulator/dtos/EnergyReadingMessage.java
+/Users/vutzu/Facultate/SD/ds2025_spring_example-main/device-data-simulator/src/main/java/com/example/simulator/services/SimulatorService.java

@@ -1,0 +1,14 @@
+com/example/devicemanagement/repositories/DeviceRepository.class
+com/example/devicemanagement/dtos/AssociationRequest.class
+com/example/devicemanagement/dtos/DeviceUpdateDTO.class
+com/example/devicemanagement/entities/Device.class
+com/example/devicemanagement/repositories/UserDeviceRepository.class
+com/example/devicemanagement/config/RabbitMQConfig.class
+com/example/devicemanagement/controllers/AssociationController.class
+com/example/devicemanagement/controllers/DeviceController.class
+com/example/devicemanagement/services/DeviceService.class
+com/example/devicemanagement/DeviceManagementApplication.class
+com/example/devicemanagement/dtos/DeviceDTO.class
+com/example/devicemanagement/dtos/DeviceCreateDTO.class
+com/example/devicemanagement/entities/UserDevice.class
+com/example/devicemanagement/dtos/DeviceSyncMessage.class

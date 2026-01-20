@@ -1,0 +1,14 @@
+com/example/monitoring/dtos/EnergyReadingMessage.class
+com/example/monitoring/entities/HourlyTotal.class
+com/example/monitoring/config/RabbitMQConfig.class
+com/example/monitoring/repositories/HourlyTotalRepository.class
+com/example/monitoring/entities/Device.class
+com/example/monitoring/repositories/MeasurementRepository.class
+com/example/monitoring/controllers/EnergyController.class
+com/example/monitoring/consumers/SyncQueueListener.class
+com/example/monitoring/dtos/DeviceSyncMessage.class
+com/example/monitoring/MonitoringServiceApplication.class
+com/example/monitoring/entities/Measurement.class
+com/example/monitoring/consumers/DataQueueListener.class
+com/example/monitoring/services/EnergyService.class
+com/example/monitoring/repositories/DeviceRepository.class

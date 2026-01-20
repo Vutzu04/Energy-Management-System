@@ -1,0 +1,5 @@
+com/example/simulator/dtos/EnergyReadingMessage.class
+com/example/simulator/SimulatorApplication.class
+com/example/simulator/services/SimulatorService.class
+com/example/simulator/controllers/SimulatorController.class
+com/example/simulator/config/RabbitMQConfig.class

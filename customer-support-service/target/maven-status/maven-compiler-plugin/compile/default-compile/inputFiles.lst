@@ -1,0 +1,11 @@
+/Users/vutzu/Facultate/SD/ds2025_spring_example-main/customer-support-service/src/main/java/com/example/customersupport/repositories/ChatRepository.java
+/Users/vutzu/Facultate/SD/ds2025_spring_example-main/customer-support-service/src/main/java/com/example/customersupport/services/ChatService.java
+/Users/vutzu/Facultate/SD/ds2025_spring_example-main/customer-support-service/src/main/java/com/example/customersupport/services/RuleEngine.java
+/Users/vutzu/Facultate/SD/ds2025_spring_example-main/customer-support-service/src/main/java/com/example/customersupport/listeners/ChatMessageListener.java
+/Users/vutzu/Facultate/SD/ds2025_spring_example-main/customer-support-service/src/main/java/com/example/customersupport/repositories/RuleRepository.java
+/Users/vutzu/Facultate/SD/ds2025_spring_example-main/customer-support-service/src/main/java/com/example/customersupport/entities/ChatMessage.java
+/Users/vutzu/Facultate/SD/ds2025_spring_example-main/customer-support-service/src/main/java/com/example/customersupport/dtos/ChatMessageDTO.java
+/Users/vutzu/Facultate/SD/ds2025_spring_example-main/customer-support-service/src/main/java/com/example/customersupport/CustomerSupportServiceApplication.java
+/Users/vutzu/Facultate/SD/ds2025_spring_example-main/customer-support-service/src/main/java/com/example/customersupport/config/RabbitConfig.java
+/Users/vutzu/Facultate/SD/ds2025_spring_example-main/customer-support-service/src/main/java/com/example/customersupport/controllers/ChatController.java
+/Users/vutzu/Facultate/SD/ds2025_spring_example-main/customer-support-service/src/main/java/com/example/customersupport/entities/SupportRule.java

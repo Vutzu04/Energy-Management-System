@@ -1,0 +1,14 @@
+/Users/vutzu/Facultate/SD/ds2025_spring_example-main/monitoring-service/src/main/java/com/example/monitoring/MonitoringServiceApplication.java
+/Users/vutzu/Facultate/SD/ds2025_spring_example-main/monitoring-service/src/main/java/com/example/monitoring/config/RabbitMQConfig.java
+/Users/vutzu/Facultate/SD/ds2025_spring_example-main/monitoring-service/src/main/java/com/example/monitoring/consumers/DataQueueListener.java
+/Users/vutzu/Facultate/SD/ds2025_spring_example-main/monitoring-service/src/main/java/com/example/monitoring/consumers/SyncQueueListener.java
+/Users/vutzu/Facultate/SD/ds2025_spring_example-main/monitoring-service/src/main/java/com/example/monitoring/controllers/EnergyController.java
+/Users/vutzu/Facultate/SD/ds2025_spring_example-main/monitoring-service/src/main/java/com/example/monitoring/dtos/DeviceSyncMessage.java
+/Users/vutzu/Facultate/SD/ds2025_spring_example-main/monitoring-service/src/main/java/com/example/monitoring/dtos/EnergyReadingMessage.java
+/Users/vutzu/Facultate/SD/ds2025_spring_example-main/monitoring-service/src/main/java/com/example/monitoring/entities/Device.java
+/Users/vutzu/Facultate/SD/ds2025_spring_example-main/monitoring-service/src/main/java/com/example/monitoring/entities/HourlyTotal.java
+/Users/vutzu/Facultate/SD/ds2025_spring_example-main/monitoring-service/src/main/java/com/example/monitoring/entities/Measurement.java
+/Users/vutzu/Facultate/SD/ds2025_spring_example-main/monitoring-service/src/main/java/com/example/monitoring/repositories/DeviceRepository.java
+/Users/vutzu/Facultate/SD/ds2025_spring_example-main/monitoring-service/src/main/java/com/example/monitoring/repositories/HourlyTotalRepository.java
+/Users/vutzu/Facultate/SD/ds2025_spring_example-main/monitoring-service/src/main/java/com/example/monitoring/repositories/MeasurementRepository.java
+/Users/vutzu/Facultate/SD/ds2025_spring_example-main/monitoring-service/src/main/java/com/example/monitoring/services/EnergyService.java

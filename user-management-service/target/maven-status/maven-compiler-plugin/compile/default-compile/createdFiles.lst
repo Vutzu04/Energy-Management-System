@@ -1,0 +1,11 @@
+com/example/usermanagement/services/UserService.class
+com/example/usermanagement/dtos/UserCreateDTO.class
+com/example/usermanagement/UserManagementApplication.class
+com/example/usermanagement/controllers/UserController.class
+com/example/usermanagement/dtos/UserUpdateDTO.class
+com/example/usermanagement/entities/User.class
+com/example/usermanagement/repositories/UserRepository.class
+com/example/usermanagement/dtos/UserDTO.class
+com/example/usermanagement/dtos/UserSyncMessage.class
+com/example/usermanagement/config/RabbitMQConfig.class
+com/example/usermanagement/config/RestTemplateConfig.class

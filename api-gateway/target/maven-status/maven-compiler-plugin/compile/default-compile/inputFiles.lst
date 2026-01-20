@@ -1,0 +1,9 @@
+/Users/vutzu/Facultate/SD/ds2025_spring_example-main/api-gateway/src/main/java/com/example/apigateway/ApiGatewayApplication.java
+/Users/vutzu/Facultate/SD/ds2025_spring_example-main/api-gateway/src/main/java/com/example/apigateway/config/CorsConfig.java
+/Users/vutzu/Facultate/SD/ds2025_spring_example-main/api-gateway/src/main/java/com/example/apigateway/config/SecurityConfig.java
+/Users/vutzu/Facultate/SD/ds2025_spring_example-main/api-gateway/src/main/java/com/example/apigateway/config/WebClientConfig.java
+/Users/vutzu/Facultate/SD/ds2025_spring_example-main/api-gateway/src/main/java/com/example/apigateway/controllers/GatewayController.java
+/Users/vutzu/Facultate/SD/ds2025_spring_example-main/api-gateway/src/main/java/com/example/apigateway/filters/AuthenticationFilter.java
+/Users/vutzu/Facultate/SD/ds2025_spring_example-main/api-gateway/src/main/java/com/example/apigateway/handlers/GlobalExceptionHandler.java
+/Users/vutzu/Facultate/SD/ds2025_spring_example-main/api-gateway/src/main/java/com/example/apigateway/services/GatewayService.java
+/Users/vutzu/Facultate/SD/ds2025_spring_example-main/api-gateway/src/main/java/com/example/apigateway/utils/JwtUtil.java
